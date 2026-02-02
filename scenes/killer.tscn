@@ -215,6 +215,7 @@ shape = SubResource("CapsuleShape3D_lquwl")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=136525151]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+fov = 60.0
 
 [node name="Weapon" parent="Camera3D" unique_id=317729883 instance=ExtResource("2_4tmj0")]
 transform = Transform3D(-4.3272067e-08, -4.3272067e-08, -1.4, -0.98994946, 0.98994946, 0, 0.98994946, 0.98994946, -6.119594e-08, 0.8, -0.5, -0.8)

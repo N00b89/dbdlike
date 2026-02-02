@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://b4kmdygoooaik"]
 
-[ext_resource type="PackedScene" uid="uid://dxl02ewfw5doc" path="res://scenes/interactivewindow.tscn" id="1_2d46c"]
+[ext_resource type="PackedScene" uid="uid://dxl02ewfw5doc" path="res://scenes/window.tscn" id="1_2d46c"]
 [ext_resource type="Script" uid="uid://cfu7hwtnftajt" path="res://scenes/tiles/KillerShack.cs" id="1_wff68"]
-[ext_resource type="PackedScene" uid="uid://qdvyj27aorup" path="res://scenes/interactivepallet.tscn" id="2_wff68"]
+[ext_resource type="PackedScene" uid="uid://qdvyj27aorup" path="res://scenes/pallet.tscn" id="2_wff68"]
 [ext_resource type="Texture2D" uid="uid://bnhmggakm1pv1" path="res://textures/milflr002.png" id="3_pxry0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4golu"]

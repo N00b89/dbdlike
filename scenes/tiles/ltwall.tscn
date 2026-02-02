@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gwkkcqi6d35y" path="res://scenes/tiles/LTWall.cs" id="1_x3hib"]
 [ext_resource type="Texture2D" uid="uid://bnhmggakm1pv1" path="res://textures/milflr002.png" id="2_nc5hy"]
-[ext_resource type="PackedScene" uid="uid://dxl02ewfw5doc" path="res://scenes/interactivewindow.tscn" id="3_nc5hy"]
+[ext_resource type="PackedScene" uid="uid://dxl02ewfw5doc" path="res://scenes/window.tscn" id="3_nc5hy"]
 [ext_resource type="Script" uid="uid://chqb6kneygnuw" path="res://scripts/PropSpawner.cs" id="4_x3hib"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3hib"]

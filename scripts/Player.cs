@@ -7,6 +7,7 @@ public partial class Player : Node
 	public enum CharacterType { Killer, Survivor }
 	
 	private CharacterType _type;
+	private bool _isSpectator = false;
 	private int _blood;
 	private PackedScene _characterScene;
 	private CharacterBody3D _character;
@@ -15,6 +16,11 @@ public partial class Player : Node
 	{
 		get { return _type; }
 		set { _type = value; }
+	}
+	public bool IsSpectator
+	{
+		get { return _isSpectator; }
+		set { _isSpectator = value; }
 	}
 	public PackedScene CharacterScene
 	{

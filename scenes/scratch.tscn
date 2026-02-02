@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b603e5xyoylv4"]
+[gd_scene format=3 uid="uid://b603e5xyoylv4"]
 
 [ext_resource type="Script" uid="uid://nyv70lk4fdi4" path="res://scripts/Scratch.cs" id="1_7hlf4"]
 [ext_resource type="Texture2D" uid="uid://c5vscljiwulox" path="res://textures/scratch.png" id="2_fx61d"]
 
-[node name="Scratch" type="Node3D"]
+[node name="Scratch" type="Node3D" unique_id=1407869027]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_7hlf4")
 
-[node name="Decal" type="Decal" parent="."]
+[node name="Decal" type="Decal" parent="." unique_id=326687963]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 layers = 8
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("2_fx61d")
@@ -16,11 +17,11 @@ emission_energy = 0.0
 albedo_mix = 0.0
 normal_fade = 0.4
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=1649269140]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 remote_path = NodePath("../Decal")
-update_scale = false
 
-[node name="LifespanTimer" type="Timer" parent="."]
+[node name="LifespanTimer" type="Timer" parent="." unique_id=215361093]
 wait_time = 10.0
 one_shot = true
 autostart = true

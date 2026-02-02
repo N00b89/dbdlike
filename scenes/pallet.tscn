@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://qdvyj27aorup"]
+[gd_scene format=3 uid="uid://qdvyj27aorup"]
 
 [ext_resource type="PackedScene" uid="uid://6nimdfp7a7ag" path="res://scenes/interactarea.tscn" id="1_5e7e6"]
+[ext_resource type="Script" uid="uid://bfl5wbn5xpuxi" path="res://scripts/Pallet.cs" id="1_kpbrv"]
 [ext_resource type="PackedScene" uid="uid://dqxss542fnhkd" path="res://models/pallet/pallet.tscn" id="2_svv35"]
+[ext_resource type="Script" uid="uid://duk3kh3m2v3iu" path="res://folder.gd" id="4_dhakx"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oqlju"]
 points = PackedVector3Array(0.09300791, 0.08434843, 0.016318168, 0.09240651, 0.08411636, 0.018849948, 0.09300791, -0.08445515, 0.016318168, 0.09300791, 0.08434843, 0, -0.09317084, 0.08434843, 0.016318168, 0.09240651, -0.08500219, 0.018849948, -0.09249654, 0.08411636, 0.018849948, 0.09300791, -0.08445515, 0, -0.09317084, 0.08434843, 0, -0.09317084, -0.08445515, 0.016318168, 0.09240651, -0.08500219, 0.0162868, -0.09249654, -0.08500219, 0.018849948, -0.09317084, -0.08445515, 0, -0.09249654, -0.08500219, 0.0162868)
@@ -66,28 +68,32 @@ _data = {
 &"drop": SubResource("Animation_ljrvg")
 }
 
-[node name="InteractivePallet" type="Node3D"]
+[node name="Pallet" type="Node3D" unique_id=1227577336]
+script = ExtResource("1_kpbrv")
 
-[node name="InteractAreaBack" parent="." instance=ExtResource("1_5e7e6")]
+[node name="InteractAreaBack" parent="." unique_id=1321062470 instance=ExtResource("1_5e7e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="InteractAreaFront" parent="." instance=ExtResource("1_5e7e6")]
+[node name="InteractAreaFront" parent="." unique_id=629650811 instance=ExtResource("1_5e7e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="Pivot" type="Node3D" parent="." unique_id=1800305722]
 
-[node name="Pallet" type="AnimatableBody3D" parent="Pivot"]
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Pivot" unique_id=1989275351]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.1, 0)
 sync_to_physics = false
 
-[node name="Model" parent="Pivot/Pallet" instance=ExtResource("2_svv35")]
+[node name="Model" parent="Pivot/AnimatableBody3D" unique_id=202017569 instance=ExtResource("2_svv35")]
 transform = Transform3D(-7.6927655e-08, 5.0654954e-08, 1.4, -0.36234665, 1.3522961, -6.883928e-08, -1.3522961, -0.36234665, -6.119594e-08, 0, 0.099999905, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Pallet"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/AnimatableBody3D" unique_id=1481931433]
 transform = Transform3D(-6.7710556e-07, -12.322589, -1.5617474e-06, -3.1893208, -1.333284e-06, 11.902707, -11.902707, 1.0582436e-06, -3.1893208, 0.000795214, 0.00012726367, -0.00015217176)
 shape = SubResource("ConvexPolygonShape3D_oqlju")
 
-[node name="PalletAnim" type="AnimationPlayer" parent="Pivot/Pallet"]
-libraries = {
-&"": SubResource("AnimationLibrary_qqp8n")
-}
+[node name="PalletAnim" type="AnimationPlayer" parent="." unique_id=889205295]
+root_node = NodePath("../Pivot/AnimatableBody3D")
+libraries/ = SubResource("AnimationLibrary_qqp8n")
+
+[node name="Sounds" type="Node" parent="." unique_id=1245748353]
+script = ExtResource("4_dhakx")
+metadata/_custom_type_script = "uid://duk3kh3m2v3iu"

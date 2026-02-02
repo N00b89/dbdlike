@@ -8,7 +8,8 @@ public partial class Killer : CharacterBody3D
 	public enum InteractState { None, AttackRecovery, Breaking, Vaulting, GrabbingSurvivor, DroppingSurvivor, HookingSurvivor, Mori }
 	
 	private Player _player;
-	[Export]private float _speed = 9.2f;
+	private const float BaseSpeed = 9.04f;
+	[Export]private float _speed = 9.04f;
 	private float _haste = 1.0f;
 	private float _mouseSensitivity = 0.002f;	
 	private Camera3D _camera;
@@ -127,6 +128,7 @@ public partial class Killer : CharacterBody3D
 		if (_player.Type == Player.CharacterType.Survivor)
 		{
 			GetNode<SpotLight3D>("RedStain").Visible = true;
+			GetNode<Node3D>("Model").Visible = true;
 		}
 		GetNode<AnimationPlayer>("RedStainAnim").Play("noise");
 		
@@ -165,16 +167,17 @@ public partial class Killer : CharacterBody3D
 			// Get the input direction and handle the movement/deceleration.
 			// As good practice, you should replace UI actions with custom gameplay actions.
 			Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
-			Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+			Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y));
 			if (direction != Vector3.Zero)
 			{
-				velocity.X = direction.X * _speed * _haste;
-				velocity.Z = direction.Z * _speed * _haste;
+				velocity.X = direction.X * _speed;
+				velocity.Z = direction.Z * _speed;
 			}
+			
 			else
 			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, _speed * _haste);
-				velocity.Z = Mathf.MoveToward(Velocity.Z, 0, _speed * _haste);
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, _speed);
+				velocity.Z = Mathf.MoveToward(Velocity.Z, 0, _speed);
 			}
 
 		Velocity = velocity;

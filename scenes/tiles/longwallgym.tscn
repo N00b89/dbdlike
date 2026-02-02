@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://e77db3esdk7s"]
 
 [ext_resource type="Script" uid="uid://2odyvy04in7n" path="res://scenes/tiles/LongWallGym.cs" id="1_ljrvg"]
-[ext_resource type="PackedScene" uid="uid://dxl02ewfw5doc" path="res://scenes/interactivewindow.tscn" id="1_y4b3f"]
+[ext_resource type="PackedScene" uid="uid://dxl02ewfw5doc" path="res://scenes/window.tscn" id="1_y4b3f"]
 [ext_resource type="Texture2D" uid="uid://bnhmggakm1pv1" path="res://textures/milflr002.png" id="3_bh4sd"]
-[ext_resource type="PackedScene" uid="uid://qdvyj27aorup" path="res://scenes/interactivepallet.tscn" id="3_vodtl"]
+[ext_resource type="PackedScene" uid="uid://qdvyj27aorup" path="res://scenes/pallet.tscn" id="3_vodtl"]
 [ext_resource type="Script" uid="uid://chqb6kneygnuw" path="res://scripts/PropSpawner.cs" id="4_oqlju"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqlju"]

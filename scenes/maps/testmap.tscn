@@ -41,6 +41,8 @@ script = ExtResource("1_goqyv")
 [node name="TestMap" type="Node3D" parent="." unique_id=77074480]
 script = ExtResource("1_o7ia3")
 
+[node name="Killer" parent="TestMap" unique_id=119096948 instance=ExtResource("4_n6foo")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="TestMap" unique_id=1533269868]
 environment = SubResource("Environment_goqyv")
 
@@ -64,5 +66,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
 
 [node name="LongWallGym" parent="TestMap" unique_id=21673679 instance=ExtResource("5_c27os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 16)
-
-[node name="Killer" parent="TestMap" unique_id=119096948 instance=ExtResource("4_n6foo")]

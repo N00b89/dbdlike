@@ -10,7 +10,9 @@ public partial class Survivor : CharacterBody3D
 	
 	private Player _player;
 	private Node3D _model;
-	[Export] private float _speed = 2.26f;
+	private const float BaseWalkSpeed = 4.52f;
+	private const float BaseRunSpeed = 8f;
+	[Export] private float _speed = 4.52f;
 	private float _haste = 1f;
 	private float _repairSpeed = 0.016f;
 	private float _mouseSensitivity = 0.002f;
@@ -35,15 +37,18 @@ public partial class Survivor : CharacterBody3D
 			switch (_movement)
 			{
 				case MoveState.Running:
-					return 8f * _haste;
+					_speed = 8f * _haste;
+					break;
 				case MoveState.Interacting:
-					return 0f;
+					_speed = 0f;
+					break;
 				case MoveState.Walking:
 				default:
-					return 4.52f * _haste;
+					_speed = 4.52f * _haste;
+					break;
 			}
+			return _speed;
 		}
-		set { _speed = value; }
 	}
 	public HealthState Health
 	{ 
@@ -156,9 +161,28 @@ public partial class Survivor : CharacterBody3D
 			foreach (InteractArea area in _interactAreas)
 			{
 				// Interaction priority is determined by this order.
+				
+				// Drop pallet
+				if (area.GetParent() is Pallet pallet
+				 && pallet.State == Pallet.PalletState.Up)
+				{
+					switch (_movement)
+					{
+						case MoveState.Crouching:
+						case MoveState.Standing:
+						case MoveState.Walking:
+							_movement = MoveState.Interacting;
+							_interaction = InteractState.DroppingPallet;
+							pallet.Drop(this);
+							break;
+					}
+					return;
+				}
+				
+				// Generator
 				if (area.GetParent() is Generator gen 
-					&& gen.IsRepairable
-					&& (area.InteractingBody == null || area.InteractingBody == this))
+				 && gen.IsRepairable
+				 && (area.InteractingBody == null || area.InteractingBody == this))
 				{
 					ProgressBar progressBar = GetNode<ProgressBar>("HUD/ProgressBar");
 					
