@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://2odyvy04in7n" path="res://scenes/tiles/LongWallGym.cs" id="1_ljrvg"]
 [ext_resource type="PackedScene" uid="uid://dxl02ewfw5doc" path="res://scenes/window.tscn" id="1_y4b3f"]
 [ext_resource type="Texture2D" uid="uid://bnhmggakm1pv1" path="res://textures/milflr002.png" id="3_bh4sd"]
-[ext_resource type="PackedScene" uid="uid://qdvyj27aorup" path="res://scenes/pallet.tscn" id="3_vodtl"]
 [ext_resource type="Script" uid="uid://chqb6kneygnuw" path="res://scripts/PropSpawner.cs" id="4_oqlju"]
+[ext_resource type="Script" uid="uid://dm3nqxqlbarhc" path="res://scripts/PalletSpawner.cs" id="6_ucylw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqlju"]
 albedo_texture = ExtResource("3_bh4sd")
@@ -151,9 +151,6 @@ script = ExtResource("1_ljrvg")
 [node name="Window" parent="." unique_id=2042870489 instance=ExtResource("1_y4b3f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000038, 0, -6.0000005)
 
-[node name="Pallet" parent="." unique_id=1900643373 instance=ExtResource("3_vodtl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 3.6)
-
 [node name="Walls" type="MeshInstance3D" parent="." unique_id=1016339000]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 material_override = SubResource("StandardMaterial3D_oqlju")
@@ -168,3 +165,7 @@ shape = SubResource("ConcavePolygonShape3D_oqlju")
 [node name="GeneratorSpawn" type="Node3D" parent="." unique_id=575467963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 0, -1.5)
 script = ExtResource("4_oqlju")
+
+[node name="PalletSpawn" type="Node3D" parent="." unique_id=1967197062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 3.6)
+script = ExtResource("6_ucylw")

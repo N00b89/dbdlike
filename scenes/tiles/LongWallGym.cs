@@ -7,7 +7,7 @@ public partial class LongWallGym : Node3D
 	public override void _Ready()
 	{
 		Random RNG = new Random();
-		GetNode<PropSpawner>("GeneratorSpawn").SpawnProp("Generator");
+		// GetNode<PropSpawner>("GeneratorSpawn").SpawnProp("Generator");
 		RotateY(Mathf.DegToRad(90 * RNG.Next(4)));
 	}
 

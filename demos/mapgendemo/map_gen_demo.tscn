@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://djmge87ip4nye"]
+[gd_scene format=3 uid="uid://djmge87ip4nye"]
 
 [ext_resource type="Script" uid="uid://2sgso2kp1w4r" path="res://demos/mapgendemo/MapGenDemo.cs" id="1_fw4df"]
 [ext_resource type="Texture2D" uid="uid://okf4fiki5xtt" path="res://textures/forest_grass_01.png" id="1_hkjbe"]
@@ -30,20 +30,20 @@ material = SubResource("StandardMaterial3D_fw4df")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hkjbe"]
 
-[node name="MapGenDemo" type="Node3D"]
+[node name="MapGenDemo" type="Node3D" unique_id=1514284978]
 script = ExtResource("1_fw4df")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=266316725]
 environment = SubResource("Environment_fw4df")
 
-[node name="CameraPivot" type="Node3D" parent="."]
+[node name="CameraPivot" type="Node3D" parent="." unique_id=484478863]
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1268036439]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 25, 70)
 
-[node name="CanvasGroup" type="CanvasGroup" parent="CameraPivot/Camera3D"]
+[node name="CanvasGroup" type="CanvasGroup" parent="CameraPivot/Camera3D" unique_id=607897981]
 
-[node name="GenerateButton" type="Button" parent="CameraPivot/Camera3D/CanvasGroup"]
+[node name="GenerateButton" type="Button" parent="CameraPivot/Camera3D/CanvasGroup" unique_id=956934363]
 offset_left = 16.0
 offset_top = 608.0
 offset_right = 96.0
@@ -51,211 +51,211 @@ offset_bottom = 639.0
 text = "Generate"
 script = ExtResource("2_x5bky")
 
-[node name="Ground" type="StaticBody3D" parent="."]
+[node name="Ground" type="StaticBody3D" parent="." unique_id=976236569]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=580305656]
 transform = Transform3D(64, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 0)
 layers = 3
 mesh = SubResource("PlaneMesh_2v08l")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=220075617]
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 0, 0)
 visible = false
 shape = SubResource("WorldBoundaryShape3D_hkjbe")
 
-[node name="Spawner1" type="Node3D" parent="."]
+[node name="Spawner1" type="Node3D" parent="." unique_id=491539831]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner2" type="Node3D" parent="."]
+[node name="Spawner2" type="Node3D" parent="." unique_id=417403703]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner3" type="Node3D" parent="."]
+[node name="Spawner3" type="Node3D" parent="." unique_id=1304786903]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner4" type="Node3D" parent="."]
+[node name="Spawner4" type="Node3D" parent="." unique_id=505305600]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner5" type="Node3D" parent="."]
+[node name="Spawner5" type="Node3D" parent="." unique_id=1632727178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner6" type="Node3D" parent="."]
+[node name="Spawner6" type="Node3D" parent="." unique_id=288006034]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner7" type="Node3D" parent="."]
+[node name="Spawner7" type="Node3D" parent="." unique_id=984111617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, -48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner8" type="Node3D" parent="."]
+[node name="Spawner8" type="Node3D" parent="." unique_id=2060151576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner9" type="Node3D" parent="."]
+[node name="Spawner9" type="Node3D" parent="." unique_id=627916294]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner10" type="Node3D" parent="."]
+[node name="Spawner10" type="Node3D" parent="." unique_id=1494938917]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner11" type="Node3D" parent="."]
+[node name="Spawner11" type="Node3D" parent="." unique_id=1344007220]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner12" type="Node3D" parent="."]
+[node name="Spawner12" type="Node3D" parent="." unique_id=2058285307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner13" type="Node3D" parent="."]
+[node name="Spawner13" type="Node3D" parent="." unique_id=688068075]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner14" type="Node3D" parent="."]
+[node name="Spawner14" type="Node3D" parent="." unique_id=1073776755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, -32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner15" type="Node3D" parent="."]
+[node name="Spawner15" type="Node3D" parent="." unique_id=1114947573]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner16" type="Node3D" parent="."]
+[node name="Spawner16" type="Node3D" parent="." unique_id=1444476174]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner17" type="Node3D" parent="."]
+[node name="Spawner17" type="Node3D" parent="." unique_id=379945098]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner18" type="Node3D" parent="."]
+[node name="Spawner18" type="Node3D" parent="." unique_id=304545933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner19" type="Node3D" parent="."]
+[node name="Spawner19" type="Node3D" parent="." unique_id=274050552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner20" type="Node3D" parent="."]
+[node name="Spawner20" type="Node3D" parent="." unique_id=460536855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner21" type="Node3D" parent="."]
+[node name="Spawner21" type="Node3D" parent="." unique_id=1906711456]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, -16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner22" type="Node3D" parent="."]
+[node name="Spawner22" type="Node3D" parent="." unique_id=1682084301]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 0)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner23" type="Node3D" parent="."]
+[node name="Spawner23" type="Node3D" parent="." unique_id=1857845436]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 0)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner24" type="Node3D" parent="."]
+[node name="Spawner24" type="Node3D" parent="." unique_id=344355152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner25" type="Node3D" parent="."]
+[node name="Spawner25" type="Node3D" parent="." unique_id=1768573516]
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner26" type="Node3D" parent="."]
+[node name="Spawner26" type="Node3D" parent="." unique_id=935931815]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner27" type="Node3D" parent="."]
+[node name="Spawner27" type="Node3D" parent="." unique_id=2104211761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner28" type="Node3D" parent="."]
+[node name="Spawner28" type="Node3D" parent="." unique_id=1412180403]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 0)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner29" type="Node3D" parent="."]
+[node name="Spawner29" type="Node3D" parent="." unique_id=231476125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner30" type="Node3D" parent="."]
+[node name="Spawner30" type="Node3D" parent="." unique_id=1506413677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner31" type="Node3D" parent="."]
+[node name="Spawner31" type="Node3D" parent="." unique_id=499031012]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner32" type="Node3D" parent="."]
+[node name="Spawner32" type="Node3D" parent="." unique_id=1769791428]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner33" type="Node3D" parent="."]
+[node name="Spawner33" type="Node3D" parent="." unique_id=611988380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner34" type="Node3D" parent="."]
+[node name="Spawner34" type="Node3D" parent="." unique_id=1535733770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner35" type="Node3D" parent="."]
+[node name="Spawner35" type="Node3D" parent="." unique_id=2077098944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 16)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner36" type="Node3D" parent="."]
+[node name="Spawner36" type="Node3D" parent="." unique_id=879270197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner37" type="Node3D" parent="."]
+[node name="Spawner37" type="Node3D" parent="." unique_id=824739012]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner38" type="Node3D" parent="."]
+[node name="Spawner38" type="Node3D" parent="." unique_id=1718264704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner39" type="Node3D" parent="."]
+[node name="Spawner39" type="Node3D" parent="." unique_id=2114689004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner40" type="Node3D" parent="."]
+[node name="Spawner40" type="Node3D" parent="." unique_id=715463513]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner41" type="Node3D" parent="."]
+[node name="Spawner41" type="Node3D" parent="." unique_id=1662176927]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner42" type="Node3D" parent="."]
+[node name="Spawner42" type="Node3D" parent="." unique_id=212469701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 48)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner43" type="Node3D" parent="."]
+[node name="Spawner43" type="Node3D" parent="." unique_id=826519652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner44" type="Node3D" parent="."]
+[node name="Spawner44" type="Node3D" parent="." unique_id=658002762]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner45" type="Node3D" parent="."]
+[node name="Spawner45" type="Node3D" parent="." unique_id=1292639073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner46" type="Node3D" parent="."]
+[node name="Spawner46" type="Node3D" parent="." unique_id=1579387696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner47" type="Node3D" parent="."]
+[node name="Spawner47" type="Node3D" parent="." unique_id=2020056399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner48" type="Node3D" parent="."]
+[node name="Spawner48" type="Node3D" parent="." unique_id=878331489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
 script = ExtResource("5_a3gi2")
 
-[node name="Spawner49" type="Node3D" parent="."]
+[node name="Spawner49" type="Node3D" parent="." unique_id=1562980677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 32)
 script = ExtResource("5_a3gi2")
 

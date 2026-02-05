@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://duk3kh3m2v3iu" path="res://folder.gd" id="3_ore10"]
 [ext_resource type="Animation" uid="uid://cpnty1ig2ukdp" path="res://animations/noise.res" id="5_28wgy"]
 [ext_resource type="Animation" uid="uid://briubvsawp8jh" path="res://animations/attack.res" id="5_mvqc0"]
-[ext_resource type="PackedScene" uid="uid://duqef5x87rokp" path="res://scenes/charactermodel.tscn" id="5_u3xk2"]
+[ext_resource type="PackedScene" uid="uid://duqef5x87rokp" path="res://scenes/character_model.tscn" id="5_u3xk2"]
 
 [sub_resource type="Animation" id="Animation_fwc4p"]
 length = 0.001

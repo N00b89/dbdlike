@@ -11,8 +11,9 @@ public partial class TileSpawner : Node3D
 	
 	public static Dictionary<string, string> TileDict = new Dictionary<string, string>
 	{
-		{ "LTWall", "res://scenes/tiles/ltwall.tscn" },
-		{ "LongWallGym", "res://scenes/tiles/longwallgym.tscn"}
+		{ "LTWall", "res://scenes/tiles/lt_wall.tscn" },
+		{ "LongWallGym", "res://scenes/tiles/long_wall_gym.tscn"},
+		{ "PalletGym", "res://scenes/tiles/pallet_gym.tscn" }
 	};
 	
 	private List<Node3D> _tiles = new List<Node3D>();

@@ -5,8 +5,9 @@
 [ext_resource type="Script" uid="uid://dfk7rhnpsgaa8" path="res://scenes/maps/TestMap.cs" id="1_o7ia3"]
 [ext_resource type="PackedScene" uid="uid://0iv8qr5qkotk" path="res://scenes/props/generator.tscn" id="3_o7ia3"]
 [ext_resource type="PackedScene" uid="uid://c47h80xpwkj1b" path="res://scenes/killer.tscn" id="4_n6foo"]
-[ext_resource type="PackedScene" uid="uid://dc6d3xlsv5mf2" path="res://scenes/tiles/ltwall.tscn" id="5_2nkbr"]
-[ext_resource type="PackedScene" uid="uid://e77db3esdk7s" path="res://scenes/tiles/longwallgym.tscn" id="5_c27os"]
+[ext_resource type="PackedScene" uid="uid://dc6d3xlsv5mf2" path="res://scenes/tiles/lt_wall.tscn" id="5_2nkbr"]
+[ext_resource type="PackedScene" uid="uid://e77db3esdk7s" path="res://scenes/tiles/long_wall_gym.tscn" id="5_c27os"]
+[ext_resource type="PackedScene" uid="uid://vp0la7x1okpe" path="res://scenes/tiles/pallet_gym.tscn" id="8_n6foo"]
 
 [sub_resource type="Sky" id="Sky_c27os"]
 
@@ -66,3 +67,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
 
 [node name="LongWallGym" parent="TestMap" unique_id=21673679 instance=ExtResource("5_c27os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 16)
+
+[node name="PalletGym" parent="." unique_id=1732899247 instance=ExtResource("8_n6foo")]

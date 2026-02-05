@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://wicr0eittpgt"]
 
 [ext_resource type="Script" uid="uid://u7juortavf8k" path="res://scripts/Survivor.cs" id="1_dvhww"]
-[ext_resource type="PackedScene" uid="uid://dyh50v7xqxy6a" path="res://scenes/skillcheck.tscn" id="2_q7pxf"]
-[ext_resource type="PackedScene" uid="uid://duqef5x87rokp" path="res://scenes/charactermodel.tscn" id="2_t26pv"]
+[ext_resource type="PackedScene" uid="uid://dyh50v7xqxy6a" path="res://scenes/skill_check.tscn" id="2_q7pxf"]
+[ext_resource type="PackedScene" uid="uid://duqef5x87rokp" path="res://scenes/character_model.tscn" id="2_t26pv"]
 [ext_resource type="Script" uid="uid://duk3kh3m2v3iu" path="res://folder.gd" id="3_7yc2n"]
-[ext_resource type="PackedScene" uid="uid://b8j72i186jt04" path="res://scenes/scratchspawner.tscn" id="4_v4jtw"]
+[ext_resource type="PackedScene" uid="uid://b8j72i186jt04" path="res://scenes/scratch_spawner.tscn" id="4_v4jtw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
 height = 2.0205078

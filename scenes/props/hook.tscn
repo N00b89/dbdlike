@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://p53a6qdxn5gp"]
 
 [ext_resource type="Texture2D" uid="uid://dilq015atvatx" path="res://textures/urban_metalwall01a_small.png" id="1_eu058"]
-[ext_resource type="PackedScene" uid="uid://6nimdfp7a7ag" path="res://scenes/interactarea.tscn" id="2_s3whu"]
+[ext_resource type="PackedScene" uid="uid://6nimdfp7a7ag" path="res://scenes/interact_area.tscn" id="2_s3whu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3whu"]
 albedo_texture = ExtResource("1_eu058")
