@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public partial class ScratchSpawner : Node3D
 {
+	private Player _player;
 	private Random _RNG = new Random();
 	private List<RayCast3D> _rayCasts = new List<RayCast3D>();
 	private Timer _spawnTimer;
@@ -12,11 +13,9 @@ public partial class ScratchSpawner : Node3D
 	
 	public void SpawnScratch()
 	{
-		Player player = Owner.GetNode<Player>("%Player");
-		
-		if (player is not null 
-			&& player.Type == Player.CharacterType.Killer  // Only spawn scratch marks if player is killer.
-			&& GetParent<Survivor>().Movement == Survivor.MoveState.Running) // Only spawn scratch marks if the survivor is running.
+		if (_player is not null 
+		 && _player.Type == Player.CharacterType.Killer  // Only spawn scratch marks if player is killer.
+		 && GetParent<Survivor>().Movement == Survivor.MoveState.Running) // Only spawn scratch marks if the survivor is running.
 		{
 			foreach(RayCast3D rayCast in _rayCasts)
 			{
@@ -32,7 +31,7 @@ public partial class ScratchSpawner : Node3D
 					GetTree().Root.AddChild(scratchInstance);
 					
 					// Position decal with random offset.
-					scratchInstance.GlobalPosition = collisionPoint + collisionNormal * 0.01f; // Prevent Z-fighting with normal offset.
+					scratchInstance.GlobalPosition = collisionPoint + collisionNormal * 0.01f; // Prevent Z-fighting with offset.
 					
 					// Rotate to align with surface normal. Almost certainly not the best way to do things but it works and I'm tired of thinking about vector transformations.
 					switch (rayCast.Name)
@@ -61,6 +60,7 @@ public partial class ScratchSpawner : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_player = Owner.GetNode<Player>("%Player") ?? throw new NullReferenceException();
 		foreach (Node child in GetChildren())
 		{
 			if (child is RayCast3D rayCast)

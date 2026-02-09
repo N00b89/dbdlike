@@ -1,12 +1,29 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class TestMap : Node3D
 {
+		private List<TileSpawner> _tileSpawners = new List<TileSpawner>();
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GetNode<Player>("%Player").Type = Player.CharacterType.Killer;
+		// Get all tile spawners and add them to list.
+		foreach (Node child in GetChildren())
+		{
+			if (child is TileSpawner spawner)
+			{
+				_tileSpawners.Add(spawner);
+			}
+		}
+		
+		// Spawn each tile.
+		foreach (TileSpawner spawner in _tileSpawners)
+		{
+			spawner.DespawnTile();
+			spawner.SpawnTile(TileSpawner.RandomTileName());
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

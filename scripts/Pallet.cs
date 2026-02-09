@@ -14,14 +14,15 @@ public partial class Pallet : Prop
 	private InteractState _interaction;
 	private AnimationPlayer _animation;
 	
-	public PalletState State
+	[Export] public PalletState State
 	{
 		get { return _state; }
 		set { _state = value; }
 	}
-	public bool IsFragile
+	[Export] public bool IsFragile
 	{
 		get { return _isFragile; }
+		set { _isFragile = value; }
 	}
 	public StunArea stunArea
 	{

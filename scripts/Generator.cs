@@ -5,18 +5,18 @@ public partial class Generator : Prop
 {
 	public enum GeneratorState { Idle, Repairing, Regressing, Blocked, Complete };
 	
-	[Export] private GeneratorState _state;
-	[Export] private float _progress = 0f;
+	private GeneratorState _state;
+	private float _progress = 0f;
 	private Node3D _light;
 	private AudioStreamPlayer3D _audioDing;
 	private AudioStreamPlayer3D _audioIdle;
 	
-	public GeneratorState State 
+	[Export] public GeneratorState State 
 	{
 		get { return _state; }
 		set { _state = value; }
 	}
-	public float Progress
+	[Export] public float Progress
 	{
 		get { return _progress; }
 		set { _progress = value; }

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[Serializable]
 public partial class Network : Node
 {
 	private MultiplayerApi _api;

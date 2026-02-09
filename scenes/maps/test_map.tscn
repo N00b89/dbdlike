@@ -3,11 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://okf4fiki5xtt" path="res://textures/forest_grass_01.png" id="1_c27os"]
 [ext_resource type="Script" uid="uid://cv70nb3q1gqcl" path="res://scripts/Player.cs" id="1_goqyv"]
 [ext_resource type="Script" uid="uid://dfk7rhnpsgaa8" path="res://scenes/maps/TestMap.cs" id="1_o7ia3"]
-[ext_resource type="PackedScene" uid="uid://0iv8qr5qkotk" path="res://scenes/props/generator.tscn" id="3_o7ia3"]
-[ext_resource type="PackedScene" uid="uid://c47h80xpwkj1b" path="res://scenes/killer.tscn" id="4_n6foo"]
-[ext_resource type="PackedScene" uid="uid://dc6d3xlsv5mf2" path="res://scenes/tiles/lt_wall.tscn" id="5_2nkbr"]
-[ext_resource type="PackedScene" uid="uid://e77db3esdk7s" path="res://scenes/tiles/long_wall_gym.tscn" id="5_c27os"]
-[ext_resource type="PackedScene" uid="uid://vp0la7x1okpe" path="res://scenes/tiles/pallet_gym.tscn" id="8_n6foo"]
+[ext_resource type="PackedScene" uid="uid://b4kmdygoooaik" path="res://scenes/tiles/killer_shack.tscn" id="5_a3b3n"]
+[ext_resource type="Script" uid="uid://1brbhd26mlvi" path="res://scripts/TileSpawner.cs" id="6_qoqmi"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_a3b3n"]
 
 [sub_resource type="Sky" id="Sky_c27os"]
 
@@ -39,33 +38,45 @@ material = SubResource("StandardMaterial3D_hkjbe")
 unique_name_in_owner = true
 script = ExtResource("1_goqyv")
 
-[node name="TestMap" type="Node3D" parent="." unique_id=77074480]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=675245282]
+spawn_path = NodePath("../Map")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=759924374]
+root_path = NodePath("../MultiplayerSpawner")
+replication_config = SubResource("SceneReplicationConfig_a3b3n")
+
+[node name="Map" type="Node3D" parent="." unique_id=77074480]
 script = ExtResource("1_o7ia3")
 
-[node name="Killer" parent="TestMap" unique_id=119096948 instance=ExtResource("4_n6foo")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="TestMap" unique_id=1533269868]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map" unique_id=1533269868]
 environment = SubResource("Environment_goqyv")
 
-[node name="Ground" type="StaticBody3D" parent="TestMap" unique_id=245890820]
+[node name="Ground" type="StaticBody3D" parent="Map" unique_id=245890820]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestMap/Ground" unique_id=1708227410]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Ground" unique_id=1708227410]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_dkeku")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestMap/Ground" unique_id=1572874358]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Ground" unique_id=1572874358]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 visible = false
 shape = SubResource("WorldBoundaryShape3D_5orm7")
 
-[node name="Generator" parent="TestMap" unique_id=1755666297 instance=ExtResource("3_o7ia3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+[node name="KillerShack" parent="Map" unique_id=1811943046 instance=ExtResource("5_a3b3n")]
 
-[node name="LTWall" parent="TestMap" unique_id=1266893219 instance=ExtResource("5_2nkbr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
+[node name="TileSpawn" type="Node3D" parent="Map" unique_id=1073154789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)
+script = ExtResource("6_qoqmi")
 
-[node name="LongWallGym" parent="TestMap" unique_id=21673679 instance=ExtResource("5_c27os")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 16)
+[node name="TileSpawn2" type="Node3D" parent="Map" unique_id=163408023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+script = ExtResource("6_qoqmi")
 
-[node name="PalletGym" parent="." unique_id=1732899247 instance=ExtResource("8_n6foo")]
+[node name="TileSpawn3" type="Node3D" parent="Map" unique_id=102153964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+script = ExtResource("6_qoqmi")
+
+[node name="TileSpawn4" type="Node3D" parent="Map" unique_id=806334900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
+script = ExtResource("6_qoqmi")

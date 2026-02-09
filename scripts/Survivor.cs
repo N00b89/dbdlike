@@ -11,12 +11,13 @@ public partial class Survivor : CharacterBody3D
 	private Player _player;
 	private Node3D _model;
 	private const float BaseWalkSpeed = 4.52f;
-	private const float BaseRunSpeed = 8f;
-	[Export] private float _speed = 4.52f;
-	private float _haste = 1f;
+	private const float BaseRunSpeed = 8.0f;
+	private const float BaseRepairSpeed = 0.016f;
+	private float _speed = 4.52f;
+	private float _haste = 1.0f;
 	private float _repairSpeed = 0.016f;
 	private float _mouseSensitivity = 0.002f;
-	[Export] private HealthState _health = HealthState.Healthy;
+	private HealthState _health = HealthState.Healthy;
 	private MoveState _movement = MoveState.Standing;
 	private InteractState _interaction = InteractState.None;
 	private List<Node3D> _interactAreas = new List<Node3D>();
@@ -30,27 +31,12 @@ public partial class Survivor : CharacterBody3D
 	private float _cameraAngleMin = -45f;
 	private float _cameraAngleMax = 45f;
 	
-	public float Speed
+	[Export] public float Speed
 	{ 
-		get 
-		{
-			switch (_movement)
-			{
-				case MoveState.Running:
-					_speed = 8f * _haste;
-					break;
-				case MoveState.Interacting:
-					_speed = 0f;
-					break;
-				case MoveState.Walking:
-				default:
-					_speed = 4.52f * _haste;
-					break;
-			}
-			return _speed;
-		}
+		get { return _speed; }
+		set { _speed = value; }
 	}
-	public HealthState Health
+	[Export] public HealthState Health
 	{ 
 		get { return _health; }
 		set { _health = value; }
@@ -58,7 +44,23 @@ public partial class Survivor : CharacterBody3D
 	public MoveState Movement
 	{ 
 		get { return _movement; }
-		set { _movement = value; }
+		set 
+		{ 
+			_movement = value; 
+			switch (_movement)
+			{
+				case MoveState.Running:
+					_speed = 8f;
+					break;
+				case MoveState.Interacting:
+					_speed = 0f;
+					break;
+				case MoveState.Walking:
+				default:
+					_speed = 4.52f;
+					break;
+			}
+		}
 	}
 	public InteractState Interaction
 	{ 
