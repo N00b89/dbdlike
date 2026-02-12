@@ -2,8 +2,17 @@
 
 [ext_resource type="Script" uid="uid://yrtc4nqfe85d" path="res://scripts/Lobby.cs" id="1_o1atq"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o1atq"]
+
 [node name="Lobby" type="Node" unique_id=513342699]
 script = ExtResource("1_o1atq")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=704705560]
+spawn_path = NodePath("..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=698331736]
+root_path = NodePath("../MultiplayerSpawner")
+replication_config = SubResource("SceneReplicationConfig_o1atq")
 
 [node name="LobbyMenu" type="CanvasGroup" parent="." unique_id=1140028943]
 

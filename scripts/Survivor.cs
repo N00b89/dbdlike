@@ -44,23 +44,7 @@ public partial class Survivor : CharacterBody3D
 	public MoveState Movement
 	{ 
 		get { return _movement; }
-		set 
-		{ 
-			_movement = value; 
-			switch (_movement)
-			{
-				case MoveState.Running:
-					_speed = 8f;
-					break;
-				case MoveState.Interacting:
-					_speed = 0f;
-					break;
-				case MoveState.Walking:
-				default:
-					_speed = 4.52f;
-					break;
-			}
-		}
+		set { _movement = value; }
 	}
 	public InteractState Interaction
 	{ 

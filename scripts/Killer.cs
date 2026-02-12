@@ -10,8 +10,6 @@ public partial class Killer : CharacterBody3D
 	private Player _player;
 	private const float BaseSpeed = 9.04f;
 	private float _speed = 9.04f;
-	private float _acceleration = 1.0f;
-	private float _deceleration = 1.0f;
 	private float _haste = 1.0f;
 	private float _mouseSensitivity = 0.002f;
 	private Camera3D _camera;
@@ -32,16 +30,6 @@ public partial class Killer : CharacterBody3D
 	{ 
 		get { return _speed; }
 		set { _speed = value; }
-	}
-	[Export] public float Acceleration
-	{ 
-		get { return _acceleration; }
-		set { _acceleration = value; }
-	}
-	[Export] public float Deceleration
-	{ 
-		get { return _deceleration; }
-		set { _deceleration = value; }
 	}
 	[Export] public float Haste
 	{ 
@@ -179,21 +167,22 @@ public partial class Killer : CharacterBody3D
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
-		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y));
+		Vector3 direction = Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y).Normalized();
 		if (direction != Vector3.Zero)
 		{
-			// Accelerate
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, _speed * _acceleration);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, _speed * _acceleration);
+			velocity.X = direction.X * Speed;
+			velocity.Z = direction.Z * Speed;
 		}
 		else
 		{
-			// Decelerate
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, _speed * _deceleration);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, _speed * _deceleration);
+			// deceleration when no input is given
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
 		}
+		
 		Velocity = velocity;
 		MoveAndSlide();
+		velocity = Velocity;
 	}
 	
 	public override void _Input(InputEvent @event)

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://okf4fiki5xtt" path="res://textures/forest_grass_01.png" id="1_c27os"]
 [ext_resource type="Script" uid="uid://cv70nb3q1gqcl" path="res://scripts/Player.cs" id="1_goqyv"]
 [ext_resource type="Script" uid="uid://dfk7rhnpsgaa8" path="res://scenes/maps/TestMap.cs" id="1_o7ia3"]
-[ext_resource type="PackedScene" uid="uid://b4kmdygoooaik" path="res://scenes/tiles/killer_shack.tscn" id="5_a3b3n"]
+[ext_resource type="PackedScene" uid="uid://c47h80xpwkj1b" path="res://scenes/killer.tscn" id="6_pjele"]
 [ext_resource type="Script" uid="uid://1brbhd26mlvi" path="res://scripts/TileSpawner.cs" id="6_qoqmi"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_a3b3n"]
@@ -63,8 +63,6 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 visible = false
 shape = SubResource("WorldBoundaryShape3D_5orm7")
 
-[node name="KillerShack" parent="Map" unique_id=1811943046 instance=ExtResource("5_a3b3n")]
-
 [node name="TileSpawn" type="Node3D" parent="Map" unique_id=1073154789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)
 script = ExtResource("6_qoqmi")
@@ -80,3 +78,12 @@ script = ExtResource("6_qoqmi")
 [node name="TileSpawn4" type="Node3D" parent="Map" unique_id=806334900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
 script = ExtResource("6_qoqmi")
+
+[node name="Killer" parent="Map" unique_id=119096948 instance=ExtResource("6_pjele")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="Model" parent="Map/Killer" index="0" unique_id=836501767]
+visible = false
+
+[editable path="Map/Killer"]
+[editable path="Map/Killer/Model"]

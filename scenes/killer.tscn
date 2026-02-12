@@ -8,6 +8,23 @@
 [ext_resource type="Animation" uid="uid://briubvsawp8jh" path="res://animations/attack.res" id="5_mvqc0"]
 [ext_resource type="PackedScene" uid="uid://duqef5x87rokp" path="res://scenes/character_model.tscn" id="5_u3xk2"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
+height = 2.0205078
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jc8e8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4tmj0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ore10"]
+noise_type = 0
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hcaxd"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_ore10")
+normalize = false
+
 [sub_resource type="Animation" id="Animation_fwc4p"]
 length = 0.001
 tracks/0/type = "value"
@@ -170,27 +187,10 @@ _data = {
 &"debugvault": SubResource("Animation_gej02")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
-height = 2.0205078
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jc8e8"]
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hcaxd"]
 _data = {
 &"attack": ExtResource("5_mvqc0")
 }
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_4tmj0"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ore10"]
-noise_type = 0
-frequency = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hcaxd"]
-width = 256
-height = 256
-noise = SubResource("FastNoiseLite_ore10")
-normalize = false
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mvqc0"]
 _data = {
@@ -205,8 +205,8 @@ script = ExtResource("1_jc8e8")
 [node name="Model" parent="." unique_id=836501767 instance=ExtResource("5_u3xk2")]
 transform = Transform3D(-1.3, 0, -1.9629454e-07, 0, 1.3, 0, 1.9629454e-07, 0, -1.3, 0, -1.2, 0)
 
-[node name="KillerAnim" type="AnimationPlayer" parent="." unique_id=1300823687]
-libraries/ = SubResource("AnimationLibrary_d5jxr")
+[node name="Mannequin" parent="Model/Armature/GeneralSkeleton" parent_id_path=PackedInt32Array(836501767, 1617469283) index="0" unique_id=199757975]
+layers = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=829163064]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
@@ -228,9 +228,6 @@ script = ExtResource("2_28wgy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/BasicAttackArea" unique_id=1325498708]
 shape = SubResource("CapsuleShape3D_jc8e8")
-
-[node name="WeaponAnim" type="AnimationPlayer" parent="." unique_id=943327698]
-libraries/ = SubResource("AnimationLibrary_hcaxd")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1062893319]
 
@@ -268,6 +265,12 @@ shadow_caster_mask = 4294967281
 spot_range = 10.0
 spot_attenuation = 0.3
 spot_angle = 30.0
+
+[node name="KillerAnim" type="AnimationPlayer" parent="." unique_id=1300823687]
+libraries/ = SubResource("AnimationLibrary_d5jxr")
+
+[node name="WeaponAnim" type="AnimationPlayer" parent="." unique_id=943327698]
+libraries/ = SubResource("AnimationLibrary_hcaxd")
 
 [node name="RedStainAnim" type="AnimationPlayer" parent="." unique_id=1331439317]
 libraries/ = SubResource("AnimationLibrary_mvqc0")
