@@ -20,7 +20,7 @@ public partial class TileSpawner : Node3D
 	private List<Node3D> _props = new List<Node3D>();
 	private List <Node3D> _pallets = new List <Node3D>();
 	
-		public List<Node3D> Props
+	public List<Node3D> Props
 	{
 		get { return _props; }
 		set { _props = value; }

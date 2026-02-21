@@ -9,7 +9,7 @@ public partial class ScratchSpawner : Node3D
 	private List<RayCast3D> _rayCasts = new List<RayCast3D>();
 	private Timer _spawnTimer;
 	
-	[Export] public PackedScene scratchScene = ResourceLoader.Load<PackedScene>("res://scenes/scratch.tscn");
+	[Export] public PackedScene ScratchScene = ResourceLoader.Load<PackedScene>("res://scenes/scratch.tscn");
 	
 	public void SpawnScratch()
 	{
@@ -27,7 +27,7 @@ public partial class ScratchSpawner : Node3D
 					Node3D collider = rayCast.GetCollider() as Node3D;
 					
 					// Instantiate decal.
-					Node3D scratchInstance = scratchScene.Instantiate<Node3D>();
+					Node3D scratchInstance = ScratchScene.Instantiate<Node3D>();
 					GetTree().Root.AddChild(scratchInstance);
 					
 					// Position decal with random offset.

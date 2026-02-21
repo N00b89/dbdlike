@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://btsky6rh4gpcg"]
+
+[ext_resource type="Script" uid="uid://mwpasby2n67t" path="res://scripts/ShootProjectile.cs" id="1_myvew"]
+[ext_resource type="PackedScene" uid="uid://l28n0i1bekje" path="res://scenes/projectiles/debug_projectile.tscn" id="2_ffcho"]
+[ext_resource type="Script" uid="uid://duk3kh3m2v3iu" path="res://folder.gd" id="3_ffcho"]
+
+[node name="ShootProjectile" type="Node3D" unique_id=254164964]
+script = ExtResource("1_myvew")
+ProjectileScene = ExtResource("2_ffcho")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1773866770]
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD" unique_id=1455242797]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -48.0
+offset_right = 400.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+step = 1.0
+
+[node name="PowerLabel" type="Label" parent="HUD" unique_id=979166280]
+offset_left = 496.0
+offset_top = 576.0
+offset_right = 648.0
+offset_bottom = 599.0
+text = "M2 - Throw Hatchet"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Timers" type="Node" parent="." unique_id=1277789816]
+script = ExtResource("3_ffcho")
+metadata/_custom_type_script = "uid://duk3kh3m2v3iu"
+
+[node name="Windup" type="Timer" parent="Timers" unique_id=1592632577]
+wait_time = 0.9
+one_shot = true

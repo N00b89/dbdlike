@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class TestMap : Node3D
+public partial class TestMap : Map
 {
 		private List<TileSpawner> _tileSpawners = new List<TileSpawner>();
 	

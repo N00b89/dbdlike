@@ -6,7 +6,7 @@ public partial class Generator : Prop
 	public enum GeneratorState { Idle, Repairing, Regressing, Blocked, Complete };
 	
 	private GeneratorState _state;
-	private float _progress = 0f;
+	private float _progress = 0.0f;
 	private Node3D _light;
 	private AudioStreamPlayer3D _audioDing;
 	private AudioStreamPlayer3D _audioIdle;

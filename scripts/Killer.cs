@@ -10,13 +10,15 @@ public partial class Killer : CharacterBody3D
 	private Player _player;
 	private const float BaseSpeed = 9.04f;
 	private float _speed = 9.04f;
+	private float _acceleration = 60.0f;
+	private float _deceleration = 90.0f;
 	private float _haste = 1.0f;
 	private float _mouseSensitivity = 0.002f;
 	private Camera3D _camera;
 	private ProgressBar _progressBar;
-	private float _cameraPitch = 0f;
-	private float _cameraPitchMin = -60f;
-	private float _cameraPitchMax = 60f;
+	private float _cameraPitch = 0.0f;
+	private float _cameraPitchMin = -60.0f;
+	private float _cameraPitchMax = 60.0f;
 	private MoveState _movement = MoveState.Standing;
 	private InteractState _interaction = InteractState.None;
 	private Survivor _carriedSurvivor;
@@ -55,6 +57,10 @@ public partial class Killer : CharacterBody3D
 	{ 
 		get { return _interactAreas; }
 		set { _interactAreas = value; }
+	}
+		public Camera3D Camera
+	{ 
+		get { return _camera; }
 	}
 	
 	public void ClearInteraction()
@@ -130,7 +136,12 @@ public partial class Killer : CharacterBody3D
 			GetNode<SpotLight3D>("RedStain").Visible = true;
 			GetNode<Node3D>("Model").Visible = true;
 		}
-		GetNode<AnimationPlayer>("RedStainAnim").Play("noise");
+		else if (_player.Type == Player.CharacterType.Killer)
+		{
+			GetNode<SpotLight3D>("RedStain").Visible = false;
+			GetNode<Node3D>("Model").Visible = false;
+		}
+		GetNode<AnimationPlayer>("RedStainAnim").Play("Noise");
 		
 		// Lock the mouse cursor to the center of the screen and hide it
 		Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -150,6 +161,10 @@ public partial class Killer : CharacterBody3D
 			_movement = MoveState.Walking;
 			// GD.Print(Name + " is walking.");
 		}
+		else
+		{
+			_movement = MoveState.Standing;
+		}
 		
 		ProcessAnimations();
 	}
@@ -167,22 +182,22 @@ public partial class Killer : CharacterBody3D
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
-		Vector3 direction = Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y).Normalized();
+		Vector3 direction = Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y);
+		direction = direction.Normalized();
 		if (direction != Vector3.Zero)
 		{
-			velocity.X = direction.X * Speed;
-			velocity.Z = direction.Z * Speed;
+			velocity.X = Mathf.MoveToward(velocity.X, direction.X * _speed, _acceleration * (float)delta);
+			velocity.Z = Mathf.MoveToward(velocity.Z, direction.Z * _speed, _acceleration * (float)delta);
 		}
 		else
 		{
-			// deceleration when no input is given
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+			// Decelerate when no input is given.
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, _deceleration * (float)delta);
+			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, _deceleration * (float)delta);
 		}
 		
 		Velocity = velocity;
 		MoveAndSlide();
-		velocity = Velocity;
 	}
 	
 	public override void _Input(InputEvent @event)
