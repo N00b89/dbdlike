@@ -4,23 +4,25 @@
 [ext_resource type="PackedScene" uid="uid://c4clc5b34jv2x" path="res://scenes/wall.tscn" id="2_ynh3d"]
 [ext_resource type="Texture2D" uid="uid://bnhmggakm1pv1" path="res://textures/milflr002.png" id="3_rvfvb"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_w47e0"]
+[sub_resource type="BoxMesh" id="BoxMesh_qvkcj"]
 resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxq3c"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnju7"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_rvfvb")
 uv1_scale = Vector3(4, 4, 4)
 
-[node name="Window" type="Node3D"]
+[node name="Window" type="Node3D" unique_id=531071672]
 
-[node name="MeshInstance3D" parent="." instance=ExtResource("2_ynh3d")]
-transform = Transform3D(-8.742278e-09, 0, 2, 0, 1.2, 0, -0.2, 0, -8.742278e-08, 0, 0.5999999, 0)
-mesh = SubResource("BoxMesh_w47e0")
-surface_material_override/0 = SubResource("StandardMaterial3D_jxq3c")
-
-[node name="InteractAreaFront" parent="." instance=ExtResource("1_trbjt")]
+[node name="InteractAreaFront" parent="." unique_id=969731581 instance=ExtResource("1_trbjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
 
-[node name="InteractAreaBack" parent="." instance=ExtResource("1_trbjt")]
+[node name="InteractAreaBack" parent="." unique_id=1132466397 instance=ExtResource("1_trbjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
+
+[node name="MeshInstance3D" parent="." unique_id=526454674 instance=ExtResource("2_ynh3d")]
+transform = Transform3D(-8.742278e-09, 0, -2, 0, 1.2, 0, 0.2, 0, -8.742278e-08, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_qvkcj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qnju7")
+
+[editable path="MeshInstance3D"]
