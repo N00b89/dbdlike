@@ -85,6 +85,14 @@ run={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Ground"
+3d_physics/layer_2="Tile"
+3d_physics/layer_3="Killer"
+3d_physics/layer_4="Survivor"
+3d_physics/layer_5="Projectile"
+
 [physics]
 
 common/physics_jitter_fix=0.0
