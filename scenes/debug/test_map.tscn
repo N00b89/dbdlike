@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b64hqha530d5s" path="res://scenes/debug/1x2m.tscn" id="6_ibx7c"]
 [ext_resource type="PackedScene" uid="uid://c47h80xpwkj1b" path="res://scenes/killer.tscn" id="6_pjele"]
 [ext_resource type="Script" uid="uid://1brbhd26mlvi" path="res://scripts/TileSpawner.cs" id="6_qoqmi"]
+[ext_resource type="PackedScene" uid="uid://wicr0eittpgt" path="res://scenes/survivor.tscn" id="6_r5srr"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_a3b3n"]
 
@@ -86,6 +87,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20000005, 0)
 
 [node name="Model" parent="Map/Killer" index="0" unique_id=836501767]
 visible = false
+
+[node name="Survivor" parent="Map" unique_id=1363274708 instance=ExtResource("6_r5srr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09813747, 0, -3.574495)
 
 [node name="DebugRulerY" type="Node" parent="Map" unique_id=2093117536]
 

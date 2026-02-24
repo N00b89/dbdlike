@@ -29,12 +29,12 @@ public partial class Killer : CharacterBody3D
 	private AnimationPlayer _weaponAnim;
 	
 	[Export] public float Speed
-	{ 
+	{
 		get { return _speed; }
 		set { _speed = value; }
 	}
 	[Export] public float Haste
-	{ 
+	{
 		get { return _haste; }
 		set { _haste = value; }
 	}
@@ -100,20 +100,27 @@ public partial class Killer : CharacterBody3D
 		}
 	}
 	
-	public void DoBasicAttack()
+	public async void DoBasicAttack()
 	{
-			_weaponAnim.Play("attack");
-			_interaction = InteractState.AttackRecovery;
-			GetNode<Timer>("Timers/AttackRecovery").Start();
-			List<Node3D> targets = _basicAttackArea.CollidingBodies;
+		_weaponAnim.Play("attack");
+		await ToSignal(_weaponAnim, AnimationPlayer.SignalName.AnimationFinished);
+		_interaction = InteractState.AttackRecovery;
+		GetNode<Timer>("Timers/AttackRecovery").Start();
+		List<Node3D> targets = _basicAttackArea.CollidingBodies;
 			
-			// Sort list by distance to Killer.
-			targets.Sort((a, b) => a.GlobalPosition.DistanceTo(this.GlobalPosition).CompareTo(b.GlobalPosition.DistanceTo(this.GlobalPosition)));
-			
-			if (targets[0] is Survivor survivor)
-			{
-				survivor.Injure();
-			}
+		// Sort list by distance to Killer.
+		targets.Sort((a, b) => a.GlobalPosition.DistanceTo(this.GlobalPosition).CompareTo(b.GlobalPosition.DistanceTo(this.GlobalPosition)));
+		
+		if (targets[0] is Survivor survivor)
+		{
+			GD.Print(targets[0]);
+			survivor.Injure();
+			_weaponAnim.Play("successful_attack_recovery");
+		}
+		else
+		{
+			_weaponAnim.Play("failed_attack_recovery");
+		}
 	}
 	
 	public void Stun(Node3D pallet, Node3D survivor, float seconds)
@@ -146,17 +153,17 @@ public partial class Killer : CharacterBody3D
 		// Lock the mouse cursor to the center of the screen and hide it
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
-	
+
 	public override void _Process(double delta)
 	{
 		if (Input.IsActionJustReleased("interaction 1") && _interaction != InteractState.AttackRecovery)
 		{
 			DoBasicAttack();
 		}
-		if (Input.IsActionPressed("forward") 
-	  	 || Input.IsActionPressed("backward") 
-	  	 || Input.IsActionPressed("left")
-	  	 || Input.IsActionPressed("right"))
+		if (Input.IsActionPressed("forward")
+		 || Input.IsActionPressed("backward")
+		 || Input.IsActionPressed("left")
+		 || Input.IsActionPressed("right"))
 		{
 			_movement = MoveState.Walking;
 			// GD.Print(Name + " is walking.");
@@ -168,7 +175,7 @@ public partial class Killer : CharacterBody3D
 		
 		ProcessAnimations();
 	}
-	
+
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = Velocity;
