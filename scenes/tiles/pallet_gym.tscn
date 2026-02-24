@@ -153,7 +153,6 @@ material_override = SubResource("StandardMaterial3D_djw0h")
 mesh = SubResource("ArrayMesh_qsvmm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls" unique_id=1483289387]
-collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D" unique_id=380860213]
 shape = SubResource("ConcavePolygonShape3D_3otf5")
