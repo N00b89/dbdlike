@@ -5,10 +5,13 @@ public partial class Projectile : RigidBody3D
 {
 	Vector3 direction;
 	float velocity;
+	private AnimationPlayer _projectileAnimations;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_projectileAnimations = GetNode<AnimationPlayer>("Animations");
+		_projectileAnimations.Play("in-air");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
