@@ -56,10 +56,10 @@ tracks/1/path = NodePath("..:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.4835298, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(1.4835298, 0, 0), Vector3(1.3089969, 0, 0), Vector3(1.4835298, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qqp8n"]
@@ -72,10 +72,10 @@ _data = {
 script = ExtResource("1_kpbrv")
 
 [node name="InteractAreaBack" parent="." unique_id=1321062470 instance=ExtResource("1_5e7e6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+transform = Transform3D(1.7043283, 0, 0, 0, 1, 0, 0, 0, 1.7604885, -1.2676027, 0, 1.0429995)
 
 [node name="InteractAreaFront" parent="." unique_id=629650811 instance=ExtResource("1_5e7e6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+transform = Transform3D(2.7191384, 0, 0, 0, 1, 0, 0, 0, 1.7144587, 2, 0, 1)
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1800305722]
 

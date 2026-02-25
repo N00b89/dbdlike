@@ -12,6 +12,9 @@ public partial class Killer : CharacterBody3D
 	private float _speed = 9.04f;
 	private float _acceleration = 60.0f;
 	private float _deceleration = 90.0f;
+	private float _lungeSpeed = 13.0f;
+	private float _lungeDuration = 0.5f;
+	private float _lungeTimeLeft = 0.0f;
 	private float _haste = 1.0f;
 	private float _mouseSensitivity = 0.002f;
 	private Camera3D _camera;
@@ -29,21 +32,31 @@ public partial class Killer : CharacterBody3D
 	private AnimationPlayer _weaponAnim;
 	
 	[Export] public float Speed
-	{ 
+	{
 		get { return _speed; }
 		set { _speed = value; }
 	}
+	[Export] public float LungeSpeed
+	{
+		get { return _lungeSpeed; }
+		set { _lungeSpeed = value; }
+	}
+	[Export] public float LungeDuration
+	{
+		get { return _lungeDuration; }
+		set { _lungeDuration = value; }
+	}
 	[Export] public float Haste
-	{ 
+	{
 		get { return _haste; }
 		set { _haste = value; }
 	}
-	[Export]public MoveState Movement
+	[Export] public MoveState Movement
 	{ 
 		get { return _movement; }
 		set { _movement = value; }
 	}
-	[Export]public InteractState Interaction
+	[Export] public InteractState Interaction
 	{ 
 		get { return _interaction; }
 		set { _interaction = value; }
@@ -78,6 +91,7 @@ public partial class Killer : CharacterBody3D
 	{
 		_movement = MoveState.Walking;
 		_speed = 4.6f;
+		_lungeSpeed = 5.6f;
 		_haste = 1.0f;
 	}
 	
@@ -100,20 +114,42 @@ public partial class Killer : CharacterBody3D
 		}
 	}
 	
-	public void DoBasicAttack()
+	public async void DoBasicAttack()
 	{
-			_weaponAnim.Play("attack");
-			_interaction = InteractState.AttackRecovery;
-			GetNode<Timer>("Timers/AttackRecovery").Start();
-			List<Node3D> targets = _basicAttackArea.CollidingBodies;
+		_weaponAnim.Play("attack");
+		await ToSignal(_weaponAnim, AnimationPlayer.SignalName.AnimationFinished);
+		_interaction = InteractState.AttackRecovery;
+		GetNode<Timer>("Timers/AttackRecovery").Start();
+		List<Node3D> targets = _basicAttackArea.CollidingBodies;
 			
-			// Sort list by distance to Killer.
-			targets.Sort((a, b) => a.GlobalPosition.DistanceTo(this.GlobalPosition).CompareTo(b.GlobalPosition.DistanceTo(this.GlobalPosition)));
-			
-			if (targets[0] is Survivor survivor)
-			{
-				survivor.Injure();
-			}
+		// Sort list by distance to Killer.
+		targets.Sort((a, b) => a.GlobalPosition.DistanceTo(this.GlobalPosition).CompareTo(b.GlobalPosition.DistanceTo(this.GlobalPosition)));
+		
+		if (targets[0] is Survivor survivor)
+		{
+			GD.Print(targets[0]);
+			survivor.Injure();
+			_weaponAnim.Play("successful_attack_recovery");
+		}
+		else
+		{
+			_weaponAnim.Play("failed_attack_recovery");
+		}
+		
+		_lungeTimeLeft = _lungeDuration;
+	}
+	
+	void Lunge(double delta)
+	{
+		if (_lungeTimeLeft <= 0.0)
+		{
+			DoBasicAttack();
+		}
+		_lungeTimeLeft -= (float)delta;
+		Vector3 forward = -_camera.GlobalTransform.Basis.Z;
+		forward.Y = 0;
+		forward = forward.Normalized();
+		Velocity = forward * _lungeSpeed;
 	}
 	
 	public void Stun(Node3D pallet, Node3D survivor, float seconds)
@@ -145,18 +181,24 @@ public partial class Killer : CharacterBody3D
 		
 		// Lock the mouse cursor to the center of the screen and hide it
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+		
+		_lungeTimeLeft = _lungeDuration;
 	}
-	
+
 	public override void _Process(double delta)
 	{
 		if (Input.IsActionJustReleased("interaction 1") && _interaction != InteractState.AttackRecovery)
 		{
 			DoBasicAttack();
 		}
-		if (Input.IsActionPressed("forward") 
-	  	 || Input.IsActionPressed("backward") 
-	  	 || Input.IsActionPressed("left")
-	  	 || Input.IsActionPressed("right"))
+		if (Input.IsActionPressed("interaction 1") && _interaction != InteractState.AttackRecovery && (_movement == MoveState.Standing || _movement == MoveState.Walking))
+		{
+			Lunge(delta);
+		}
+		if (Input.IsActionPressed("forward")
+		 || Input.IsActionPressed("backward")
+		 || Input.IsActionPressed("left")
+		 || Input.IsActionPressed("right"))
 		{
 			_movement = MoveState.Walking;
 			// GD.Print(Name + " is walking.");
@@ -168,9 +210,14 @@ public partial class Killer : CharacterBody3D
 		
 		ProcessAnimations();
 	}
-	
+
 	public override void _PhysicsProcess(double delta)
 	{
+		if (_movement == MoveState.Lunging)
+		{
+			return;
+		}
+
 		Vector3 velocity = Velocity;
 		
 		// Apply gravity.

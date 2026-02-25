@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="dbdlike"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="uid://ciqthunbe58db"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 Player="*res://scripts/Player.cs"
 Network="*res://scripts/Network.cs"
+GameManager="*uid://b5g4nrjgnn8ue"
 
 [dotnet]
 
@@ -30,7 +31,7 @@ project/assembly_name="dbdlike"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/basic_shape_creation/plugin.cfg", "res://addons/godot_3d_auto_collision_generator/plugin.cfg", "res://addons/meshcombiner/plugin.cfg", "res://addons/progress_bar_3d/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
+enabled=PackedStringArray("res://addons/basic_shape_creation/plugin.cfg", "res://addons/godot_3d_auto_collision_generator/plugin.cfg", "res://addons/meshcombiner/plugin.cfg", "res://addons/progress_bar_3d/plugin.cfg")
 
 [input]
 
@@ -84,14 +85,11 @@ run={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194439,"key_label":0,"unicode":49,"location":0,"echo":false,"script":null)
 ]
 }
-
-[layer_names]
-
-3d_physics/layer_1="Ground"
-3d_physics/layer_2="Tile"
-3d_physics/layer_3="Killer"
-3d_physics/layer_4="Survivor"
-3d_physics/layer_5="Projectile"
+quit={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [physics]
 

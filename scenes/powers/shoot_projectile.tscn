@@ -7,11 +7,11 @@
 [node name="ShootProjectile" type="Node3D" unique_id=254164964]
 script = ExtResource("1_myvew")
 ProjectileScene = ExtResource("2_ffcho")
+MaxStrength = 70.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1773866770]
 
 [node name="ProgressBar" type="ProgressBar" parent="HUD" unique_id=1455242797]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

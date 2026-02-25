@@ -5,14 +5,13 @@ using System.Collections.Generic;
 public partial class BasicAttackArea : Area3D
 {
 		private List<Node3D> _collidingBodies = new List<Node3D>();
-	
 		public List<Node3D> CollidingBodies
 	{
 		get { return _collidingBodies; }
 		set { _collidingBodies = value; }
 	}
 
-	void OnBodyEntered(Node3D body)
+	private async void OnBodyEntered(Node3D body)
 	{
 		//GD.Print(body.Name + " entered area " + GetParent().Name + "/" + Name);
 		_collidingBodies.Add(body);
