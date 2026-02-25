@@ -12,6 +12,9 @@ public partial class Killer : CharacterBody3D
 	private float _speed = 9.04f;
 	private float _acceleration = 60.0f;
 	private float _deceleration = 90.0f;
+	private float _lungeSpeed = 13.0f;
+	private float _lungeDuration = 0.5f;
+	private float _lungeTimeLeft = 0.0f;
 	private float _haste = 1.0f;
 	private float _mouseSensitivity = 0.002f;
 	private Camera3D _camera;
@@ -33,17 +36,27 @@ public partial class Killer : CharacterBody3D
 		get { return _speed; }
 		set { _speed = value; }
 	}
+	[Export] public float LungeSpeed
+	{
+		get { return _lungeSpeed; }
+		set { _lungeSpeed = value; }
+	}
+	[Export] public float LungeDuration
+	{
+		get { return _lungeDuration; }
+		set { _lungeDuration = value; }
+	}
 	[Export] public float Haste
 	{
 		get { return _haste; }
 		set { _haste = value; }
 	}
-	[Export]public MoveState Movement
+	[Export] public MoveState Movement
 	{ 
 		get { return _movement; }
 		set { _movement = value; }
 	}
-	[Export]public InteractState Interaction
+	[Export] public InteractState Interaction
 	{ 
 		get { return _interaction; }
 		set { _interaction = value; }
@@ -78,6 +91,7 @@ public partial class Killer : CharacterBody3D
 	{
 		_movement = MoveState.Walking;
 		_speed = 4.6f;
+		_lungeSpeed = 5.6f;
 		_haste = 1.0f;
 	}
 	
@@ -121,6 +135,21 @@ public partial class Killer : CharacterBody3D
 		{
 			_weaponAnim.Play("failed_attack_recovery");
 		}
+		
+		_lungeTimeLeft = _lungeDuration;
+	}
+	
+	void Lunge(double delta)
+	{
+		if (_lungeTimeLeft <= 0.0)
+		{
+			DoBasicAttack();
+		}
+		_lungeTimeLeft -= (float)delta;
+		Vector3 forward = -_camera.GlobalTransform.Basis.Z;
+		forward.Y = 0;
+		forward = forward.Normalized();
+		Velocity = forward * _lungeSpeed;
 	}
 	
 	public void Stun(Node3D pallet, Node3D survivor, float seconds)
@@ -152,6 +181,8 @@ public partial class Killer : CharacterBody3D
 		
 		// Lock the mouse cursor to the center of the screen and hide it
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+		
+		_lungeTimeLeft = _lungeDuration;
 	}
 
 	public override void _Process(double delta)
@@ -159,6 +190,10 @@ public partial class Killer : CharacterBody3D
 		if (Input.IsActionJustReleased("interaction 1") && _interaction != InteractState.AttackRecovery)
 		{
 			DoBasicAttack();
+		}
+		if (Input.IsActionPressed("interaction 1") && _interaction != InteractState.AttackRecovery && (_movement == MoveState.Standing || _movement == MoveState.Walking))
+		{
+			Lunge(delta);
 		}
 		if (Input.IsActionPressed("forward")
 		 || Input.IsActionPressed("backward")
@@ -178,6 +213,11 @@ public partial class Killer : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (_movement == MoveState.Lunging)
+		{
+			return;
+		}
+
 		Vector3 velocity = Velocity;
 		
 		// Apply gravity.
