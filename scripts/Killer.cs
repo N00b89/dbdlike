@@ -4,17 +4,15 @@ using System.Collections.Generic;
 
 public partial class Killer : CharacterBody3D
 {
-	public enum MoveState { Standing, Walking, Lunging, LungeRecovery, CarryingSurvivor, Stunned }
-	public enum InteractState { None, AttackRecovery, Breaking, Vaulting, GrabbingSurvivor, DroppingSurvivor, HookingSurvivor, Mori }
+	public enum MoveState { Standing, Walking, AttackRecovery, Lunging, LungeRecovery, CarryingSurvivor, Stunned }
+	public enum InteractState { None, Recovery, Breaking, Vaulting, GrabbingSurvivor, DroppingSurvivor, HookingSurvivor, Mori }
 	
 	private Player _player;
 	private const float BaseSpeed = 9.04f;
 	private float _speed = 9.04f;
 	private float _acceleration = 60.0f;
 	private float _deceleration = 90.0f;
-	private float _lungeSpeed = 13.0f;
-	private float _lungeDuration = 0.5f;
-	private float _lungeTimeLeft = 0.0f;
+	private float _lungeSpeed = 13.56f;
 	private float _haste = 1.0f;
 	private float _mouseSensitivity = 0.002f;
 	private Camera3D _camera;
@@ -26,7 +24,6 @@ public partial class Killer : CharacterBody3D
 	private InteractState _interaction = InteractState.None;
 	private Survivor _carriedSurvivor;
 	private List<Node3D> _interactAreas = new List<Node3D>();
-	private BasicAttackArea _basicAttackArea;
 	private Node3D _interactTarget;
 	private AnimationPlayer _killerAnim;
 	private AnimationPlayer _weaponAnim;
@@ -41,11 +38,6 @@ public partial class Killer : CharacterBody3D
 		get { return _lungeSpeed; }
 		set { _lungeSpeed = value; }
 	}
-	[Export] public float LungeDuration
-	{
-		get { return _lungeDuration; }
-		set { _lungeDuration = value; }
-	}
 	[Export] public float Haste
 	{
 		get { return _haste; }
@@ -54,7 +46,24 @@ public partial class Killer : CharacterBody3D
 	[Export] public MoveState Movement
 	{ 
 		get { return _movement; }
-		set { _movement = value; }
+		set 
+		{
+			_movement = value;
+			switch (_movement)
+			{
+				case MoveState.Lunging:
+					_speed = _lungeSpeed;
+					break;
+				case MoveState.AttackRecovery:
+				case MoveState.LungeRecovery:
+					_speed = 4.52f;
+					break;
+				case MoveState.Walking:
+				case MoveState.Standing:
+					_speed = BaseSpeed;
+					break;
+			}
+		}
 	}
 	[Export] public InteractState Interaction
 	{ 
@@ -90,12 +99,12 @@ public partial class Killer : CharacterBody3D
 	public void ClearMovement()
 	{
 		_movement = MoveState.Walking;
-		_speed = 4.6f;
-		_lungeSpeed = 5.6f;
+		_speed = 9.04f;
+		_lungeSpeed = 13.56f;
 		_haste = 1.0f;
 	}
 	
-		public void ProcessAnimations()
+	public void ProcessAnimations()
 	{
 		switch (_interaction)
 		{
@@ -114,42 +123,47 @@ public partial class Killer : CharacterBody3D
 		}
 	}
 	
-	public async void DoBasicAttack()
+	public async void DoBasicAttack() 
 	{
-		_weaponAnim.Play("attack");
+		GetNode<Timer>("Timers/AttackButton").Stop();
+		if (!_weaponAnim.IsPlaying()) 
+		{ 
+			_weaponAnim.Play("attack");
+		} 
 		await ToSignal(_weaponAnim, AnimationPlayer.SignalName.AnimationFinished);
-		_interaction = InteractState.AttackRecovery;
-		GetNode<Timer>("Timers/AttackRecovery").Start();
-		List<Node3D> targets = _basicAttackArea.CollidingBodies;
-			
-		// Sort list by distance to Killer.
-		targets.Sort((a, b) => a.GlobalPosition.DistanceTo(this.GlobalPosition).CompareTo(b.GlobalPosition.DistanceTo(this.GlobalPosition)));
+		GetNode<Timer>("Timers/MissedAttackRecovery").Start();
+		Interaction = InteractState.Recovery;
+		Movement = MoveState.AttackRecovery;
+		List<Node3D> targets = GetNode<BasicAttackArea>("Camera3D/AttackArea").CollidingBodies;
 		
-		if (targets[0] is Survivor survivor)
-		{
-			GD.Print(targets[0]);
-			survivor.Injure();
-			_weaponAnim.Play("successful_attack_recovery");
-		}
-		else
-		{
-			_weaponAnim.Play("failed_attack_recovery");
-		}
+		// TODO: Write working hit detection. 
 		
-		_lungeTimeLeft = _lungeDuration;
 	}
 	
-	void Lunge(double delta)
+	public void Lunge()
 	{
-		if (_lungeTimeLeft <= 0.0)
+		Movement = MoveState.Lunging;
+		if (GetNode<Timer>("Timers/LungeTime").IsStopped()) 
+		{ 
+			GetNode<Timer>("Timers/LungeTime").Start();
+		} 
+	}
+	
+	public async void DoLungeAttack()
+	{
+		GetNode<Timer>("Timers/AttackButton").Stop();
+		if (!_weaponAnim.IsPlaying())
 		{
-			DoBasicAttack();
+			_weaponAnim.Play("attack");
 		}
-		_lungeTimeLeft -= (float)delta;
-		Vector3 forward = -_camera.GlobalTransform.Basis.Z;
-		forward.Y = 0;
-		forward = forward.Normalized();
-		Velocity = forward * _lungeSpeed;
+		
+		await ToSignal(_weaponAnim, AnimationPlayer.SignalName.AnimationFinished);
+		GetNode<Timer>("Timers/MissedLungeRecovery").Start();
+		Interaction = InteractState.Recovery;
+		Movement = MoveState.LungeRecovery;
+		List<Node3D> targets = GetNode<BasicAttackArea>("Camera3D/AttackArea").CollidingBodies;
+		
+		// TODO: Write working hit detection. 
 	}
 	
 	public void Stun(Node3D pallet, Node3D survivor, float seconds)
@@ -165,7 +179,6 @@ public partial class Killer : CharacterBody3D
 		_progressBar = GetNode<ProgressBar>("HUD/ProgressBar");
 		_killerAnim = GetNode<AnimationPlayer>("Model/AnimationPlayer");
 		_weaponAnim = GetNode<AnimationPlayer>("WeaponAnim");	
-		_basicAttackArea = GetNode<BasicAttackArea>("Camera3D/BasicAttackArea");
 		
 		if (_player.Type == Player.CharacterType.Survivor)
 		{
@@ -181,26 +194,32 @@ public partial class Killer : CharacterBody3D
 		
 		// Lock the mouse cursor to the center of the screen and hide it
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		
-		_lungeTimeLeft = _lungeDuration;
 	}
 
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustReleased("interaction 1") && _interaction != InteractState.AttackRecovery)
+		if (Input.IsActionJustReleased("interaction 1") 
+		&& _interaction != InteractState.Recovery)
 		{
 			DoBasicAttack();
 		}
-		if (Input.IsActionPressed("interaction 1") && _interaction != InteractState.AttackRecovery && (_movement == MoveState.Standing || _movement == MoveState.Walking))
+		if (Input.IsActionPressed("interaction 1")
+		&& _interaction != InteractState.Recovery
+		&& (_movement == MoveState.Standing || _movement == MoveState.Walking)
+		&& GetNode<Timer>("Timers/AttackButton").IsStopped())
 		{
-			Lunge(delta);
+			GetNode<Timer>("Timers/AttackButton").Start();
 		}
+
 		if (Input.IsActionPressed("forward")
 		 || Input.IsActionPressed("backward")
 		 || Input.IsActionPressed("left")
 		 || Input.IsActionPressed("right"))
 		{
-			_movement = MoveState.Walking;
+			if (_movement == MoveState.Standing)
+			{
+				_movement = MoveState.Walking;
+			}
 			// GD.Print(Name + " is walking.");
 		}
 		else
@@ -209,15 +228,12 @@ public partial class Killer : CharacterBody3D
 		}
 		
 		ProcessAnimations();
+		
+		GD.Print($"Movement: {_movement}, Interaction: {_interaction}");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_movement == MoveState.Lunging)
-		{
-			return;
-		}
-
 		Vector3 velocity = Velocity;
 		
 		// Apply gravity.

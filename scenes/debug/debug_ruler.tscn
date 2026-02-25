@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://dr8goioxu587w"]
+
+[ext_resource type="PackedScene" uid="uid://b64hqha530d5s" path="res://scenes/debug/1x2m.tscn" id="1_bihu4"]
+
+[node name="DebugRuler" type="Node3D" unique_id=440311452]
+
+[node name="DebugRulerY" type="Node" parent="." unique_id=1391302792]
+
+[node name="1x2m" parent="DebugRulerY" unique_id=2087425662 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 4, -98)
+
+[node name="1x2m2" parent="DebugRulerY" unique_id=1943777928 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 8, -98)
+
+[node name="1x2m3" parent="DebugRulerY" unique_id=2050229787 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 12, -98)
+
+[node name="1x2m4" parent="DebugRulerY" unique_id=971024082 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 16, -98)
+
+[node name="1x2m5" parent="DebugRulerY" unique_id=440735748 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 20, -98)
+
+[node name="1x2m6" parent="DebugRulerY" unique_id=25887725 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 24.000002, -98)
+
+[node name="1x2m7" parent="DebugRulerY" unique_id=2018267982 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 28, -98)
+
+[node name="1x2m8" parent="DebugRulerY" unique_id=1811205679 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 32, -98)
+
+[node name="1x2m9" parent="DebugRulerY" unique_id=1697269232 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 36, -98)
+
+[node name="1x2m10" parent="DebugRulerY" unique_id=1692898781 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 40, -97.99999)
+
+[node name="1x2m11" parent="DebugRulerY" unique_id=1238604077 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 44, -98)
+
+[node name="1x2m12" parent="DebugRulerY" unique_id=1277897336 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 48, -98)
+
+[node name="1x2m13" parent="DebugRulerY" unique_id=356086343 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 52, -98)
+
+[node name="1x2m14" parent="DebugRulerY" unique_id=41488195 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 56, -98)
+
+[node name="1x2m15" parent="DebugRulerY" unique_id=1667467456 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 60, -98)
+
+[node name="DebugRulerZ" type="Node" parent="." unique_id=2071884987]
+
+[node name="1x2m" parent="DebugRulerZ" unique_id=849046689 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -96)
+
+[node name="1x2m2" parent="DebugRulerZ" unique_id=223649233 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -92)
+
+[node name="1x2m3" parent="DebugRulerZ" unique_id=925344232 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -88)
+
+[node name="1x2m4" parent="DebugRulerZ" unique_id=1280532429 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -84)
+
+[node name="1x2m5" parent="DebugRulerZ" unique_id=444927686 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -80)
+
+[node name="1x2m6" parent="DebugRulerZ" unique_id=1647131045 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -76)
+
+[node name="1x2m7" parent="DebugRulerZ" unique_id=1697121670 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -72)
+
+[node name="1x2m8" parent="DebugRulerZ" unique_id=281707541 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -68)
+
+[node name="1x2m9" parent="DebugRulerZ" unique_id=1996223706 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -64)
+
+[node name="1x2m10" parent="DebugRulerZ" unique_id=816478726 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -60)
+
+[node name="1x2m11" parent="DebugRulerZ" unique_id=1934299983 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -56)
+
+[node name="1x2m12" parent="DebugRulerZ" unique_id=1197714772 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -52)
+
+[node name="1x2m13" parent="DebugRulerZ" unique_id=1077388136 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -48)
+
+[node name="1x2m14" parent="DebugRulerZ" unique_id=191138265 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -44)
+
+[node name="1x2m15" parent="DebugRulerZ" unique_id=46346894 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -40)
+
+[node name="DebugRulerX" type="Node" parent="." unique_id=1496680790]
+
+[node name="1x2m" parent="DebugRulerX" unique_id=1118276838 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -96, 0, -99)
+
+[node name="1x2m2" parent="DebugRulerX" unique_id=342273605 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -92, 0, -99)
+
+[node name="1x2m3" parent="DebugRulerX" unique_id=270479564 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -88, 0, -99)
+
+[node name="1x2m4" parent="DebugRulerX" unique_id=1212603922 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -84, 0, -99)
+
+[node name="1x2m5" parent="DebugRulerX" unique_id=774634187 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -80, 0, -99)
+
+[node name="1x2m6" parent="DebugRulerX" unique_id=1472520696 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -76, 0, -99)
+
+[node name="1x2m7" parent="DebugRulerX" unique_id=1264693787 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -72, 0, -99)
+
+[node name="1x2m8" parent="DebugRulerX" unique_id=1027613139 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -68, 0, -99)
+
+[node name="1x2m9" parent="DebugRulerX" unique_id=690774432 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -64, 0, -99)
+
+[node name="1x2m10" parent="DebugRulerX" unique_id=1778144467 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -60, 0, -99)
+
+[node name="1x2m11" parent="DebugRulerX" unique_id=154535290 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -56, 0, -99)
+
+[node name="1x2m12" parent="DebugRulerX" unique_id=35037387 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -52, 0, -99)
+
+[node name="1x2m13" parent="DebugRulerX" unique_id=104675325 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -48, 0, -99)
+
+[node name="1x2m14" parent="DebugRulerX" unique_id=1206625732 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -44, 0, -99)
+
+[node name="1x2m15" parent="DebugRulerX" unique_id=1660034096 instance=ExtResource("1_bihu4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -40, 0, -99)

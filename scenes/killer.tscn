@@ -55,7 +55,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D/BasicAttackArea:position")
+tracks/2/path = NodePath("Camera3D/AttackArea:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -200,7 +200,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.53, -0.36094427, -1.2)]
+"values": [Vector3(0.8, -0.5, -0.8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -212,7 +212,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.5534068e-15, -1.5553677, -0.26179942)]
+"values": [Vector3(0, -1.5707964, -0.7853982)]
 }
 
 [sub_resource type="Animation" id="Animation_s3256"]
@@ -288,7 +288,6 @@ _data = {
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_jc8e8")
-LungeDuration = 0.5
 
 [node name="Model" parent="." unique_id=836501767 instance=ExtResource("5_u3xk2")]
 transform = Transform3D(-1.3, 0, -1.9629454e-07, 0, 1.3, 0, 1.9629454e-07, 0, -1.3, 0, 0, 0)
@@ -305,15 +304,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 fov = 45.0
 
 [node name="Weapon" parent="Camera3D" unique_id=317729883 instance=ExtResource("2_4tmj0")]
-transform = Transform3D(0.02086323, 0.0055902866, -1.3998336, -0.36234665, 1.352296, 2.1747698e-15, 1.352135, 0.36230353, 0.021599213, 0.53, -0.36094427, -1.2)
+transform = Transform3D(-4.327206e-08, -4.3272063e-08, -1.4000002, -0.9899493, 0.9899494, 0, 0.9899493, 0.9899494, -6.1195955e-08, 0.8, -0.5, -0.8)
 
-[node name="BasicAttackArea" type="Area3D" parent="Camera3D" unique_id=2035282030]
+[node name="AttackArea" type="Area3D" parent="Camera3D" unique_id=2035282030]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("2_28wgy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/BasicAttackArea" unique_id=1325498708]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/AttackArea" unique_id=1325498708]
 shape = SubResource("CapsuleShape3D_jc8e8")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1062893319]
@@ -368,15 +367,33 @@ libraries/ = SubResource("AnimationLibrary_mvqc0")
 [node name="Timers" type="Node" parent="." unique_id=952267279]
 script = ExtResource("3_ore10")
 
-[node name="AttackRecovery" type="Timer" parent="Timers" unique_id=482937192]
+[node name="AttackButton" type="Timer" parent="Timers" unique_id=1280089537]
+wait_time = 0.2
+one_shot = true
+
+[node name="MissedAttackRecovery" type="Timer" parent="Timers" unique_id=482937192]
+wait_time = 0.5
+one_shot = true
+
+[node name="LungeTime" type="Timer" parent="Timers" unique_id=1818129133]
+wait_time = 0.3
+one_shot = true
+
+[node name="MissedLungeRecovery" type="Timer" parent="Timers" unique_id=145140490]
 wait_time = 1.5
+one_shot = true
 
 [node name="Chase" type="Timer" parent="Timers" unique_id=896569186]
 
 [node name="Break" type="Timer" parent="Timers" unique_id=2097832096]
 
-[connection signal="body_entered" from="Camera3D/BasicAttackArea" to="Camera3D/BasicAttackArea" method="OnBodyEntered"]
-[connection signal="body_exited" from="Camera3D/BasicAttackArea" to="Camera3D/BasicAttackArea" method="OnBodyExited"]
-[connection signal="timeout" from="Timers/AttackRecovery" to="." method="ClearInteraction"]
+[connection signal="body_entered" from="Camera3D/AttackArea" to="Camera3D/AttackArea" method="OnBodyEntered"]
+[connection signal="body_exited" from="Camera3D/AttackArea" to="Camera3D/AttackArea" method="OnBodyExited"]
+[connection signal="timeout" from="Timers/AttackButton" to="." method="Lunge"]
+[connection signal="timeout" from="Timers/MissedAttackRecovery" to="." method="ClearInteraction"]
+[connection signal="timeout" from="Timers/MissedAttackRecovery" to="." method="ClearMovement"]
+[connection signal="timeout" from="Timers/LungeTime" to="." method="DoLungeAttack"]
+[connection signal="timeout" from="Timers/MissedLungeRecovery" to="." method="ClearInteraction"]
+[connection signal="timeout" from="Timers/MissedLungeRecovery" to="." method="ClearMovement"]
 
 [editable path="Model"]

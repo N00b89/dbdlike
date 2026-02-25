@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://okf4fiki5xtt" path="res://textures/forest_grass_01.png" id="1_c27os"]
 [ext_resource type="Script" uid="uid://cv70nb3q1gqcl" path="res://scripts/Player.cs" id="1_goqyv"]
 [ext_resource type="Script" uid="uid://dfk7rhnpsgaa8" path="res://scenes/debug/TestMap.cs" id="1_o7ia3"]
-[ext_resource type="PackedScene" uid="uid://b64hqha530d5s" path="res://scenes/debug/1x2m.tscn" id="6_ibx7c"]
+[ext_resource type="PackedScene" uid="uid://dr8goioxu587w" path="res://scenes/debug/debug_ruler.tscn" id="6_axw8a"]
 [ext_resource type="PackedScene" uid="uid://c47h80xpwkj1b" path="res://scenes/killer.tscn" id="6_pjele"]
 [ext_resource type="Script" uid="uid://1brbhd26mlvi" path="res://scripts/TileSpawner.cs" id="6_qoqmi"]
 [ext_resource type="PackedScene" uid="uid://wicr0eittpgt" path="res://scenes/survivor.tscn" id="6_r5srr"]
@@ -51,6 +51,8 @@ replication_config = SubResource("SceneReplicationConfig_a3b3n")
 editor_description = "1m = 2 units"
 script = ExtResource("1_o7ia3")
 
+[node name="Killer" parent="Map" unique_id=119096948 instance=ExtResource("6_pjele")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Map" unique_id=1533269868]
 environment = SubResource("Environment_goqyv")
 
@@ -82,155 +84,7 @@ script = ExtResource("6_qoqmi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
 script = ExtResource("6_qoqmi")
 
-[node name="Killer" parent="Map" unique_id=119096948 instance=ExtResource("6_pjele")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20000005, 0)
-
-[node name="Model" parent="Map/Killer" index="0" unique_id=836501767]
-visible = false
-
 [node name="Survivor" parent="Map" unique_id=1363274708 instance=ExtResource("6_r5srr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09813747, 0, -3.574495)
 
-[node name="DebugRulerY" type="Node" parent="Map" unique_id=2093117536]
-
-[node name="1x2m" parent="Map/DebugRulerY" unique_id=2087425662 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 4, -98)
-
-[node name="1x2m2" parent="Map/DebugRulerY" unique_id=2038375529 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 8, -98)
-
-[node name="1x2m3" parent="Map/DebugRulerY" unique_id=1327775229 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 12, -98)
-
-[node name="1x2m4" parent="Map/DebugRulerY" unique_id=533023652 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 16, -98)
-
-[node name="1x2m5" parent="Map/DebugRulerY" unique_id=1895525066 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 20, -98)
-
-[node name="1x2m6" parent="Map/DebugRulerY" unique_id=2000021267 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 24.000002, -98)
-
-[node name="1x2m7" parent="Map/DebugRulerY" unique_id=971991977 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 28, -98)
-
-[node name="1x2m8" parent="Map/DebugRulerY" unique_id=1177154493 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 32, -98)
-
-[node name="1x2m9" parent="Map/DebugRulerY" unique_id=1046668154 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 36, -98)
-
-[node name="1x2m10" parent="Map/DebugRulerY" unique_id=292607537 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 40, -97.99999)
-
-[node name="1x2m11" parent="Map/DebugRulerY" unique_id=489742751 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 44, -98)
-
-[node name="1x2m12" parent="Map/DebugRulerY" unique_id=215869535 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 48, -98)
-
-[node name="1x2m13" parent="Map/DebugRulerY" unique_id=390210514 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 52, -98)
-
-[node name="1x2m14" parent="Map/DebugRulerY" unique_id=706574188 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 56, -98)
-
-[node name="1x2m15" parent="Map/DebugRulerY" unique_id=2056433402 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, -1.0000001, 0, -4.371139e-08, 0, -1.0000001, -8.881784e-16, -99, 60, -98)
-
-[node name="DebugRulerZ" type="Node" parent="Map" unique_id=2142598575]
-
-[node name="1x2m" parent="Map/DebugRulerZ" unique_id=397328224 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -96)
-
-[node name="1x2m2" parent="Map/DebugRulerZ" unique_id=661615361 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -92)
-
-[node name="1x2m3" parent="Map/DebugRulerZ" unique_id=716352859 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -88)
-
-[node name="1x2m4" parent="Map/DebugRulerZ" unique_id=1427232844 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -84)
-
-[node name="1x2m5" parent="Map/DebugRulerZ" unique_id=1387034852 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -80)
-
-[node name="1x2m6" parent="Map/DebugRulerZ" unique_id=142526175 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -76)
-
-[node name="1x2m7" parent="Map/DebugRulerZ" unique_id=485091778 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -72)
-
-[node name="1x2m8" parent="Map/DebugRulerZ" unique_id=2104709056 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -68)
-
-[node name="1x2m9" parent="Map/DebugRulerZ" unique_id=1864343830 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -64)
-
-[node name="1x2m10" parent="Map/DebugRulerZ" unique_id=276555699 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -60)
-
-[node name="1x2m11" parent="Map/DebugRulerZ" unique_id=98092477 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -56)
-
-[node name="1x2m12" parent="Map/DebugRulerZ" unique_id=1573474355 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -52)
-
-[node name="1x2m13" parent="Map/DebugRulerZ" unique_id=1199865563 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -48)
-
-[node name="1x2m14" parent="Map/DebugRulerZ" unique_id=1583375887 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -44)
-
-[node name="1x2m15" parent="Map/DebugRulerZ" unique_id=1354826439 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99, 0, -40)
-
-[node name="DebugRulerX" type="Node" parent="Map" unique_id=73951842]
-
-[node name="1x2m" parent="Map/DebugRulerX" unique_id=458761820 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -96, 0, -99)
-
-[node name="1x2m2" parent="Map/DebugRulerX" unique_id=589234629 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -92, 0, -99)
-
-[node name="1x2m3" parent="Map/DebugRulerX" unique_id=1069399622 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -88, 0, -99)
-
-[node name="1x2m4" parent="Map/DebugRulerX" unique_id=368497046 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -84, 0, -99)
-
-[node name="1x2m5" parent="Map/DebugRulerX" unique_id=330292253 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -80, 0, -99)
-
-[node name="1x2m6" parent="Map/DebugRulerX" unique_id=738792211 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -76, 0, -99)
-
-[node name="1x2m7" parent="Map/DebugRulerX" unique_id=599630613 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -72, 0, -99)
-
-[node name="1x2m8" parent="Map/DebugRulerX" unique_id=1767222409 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -68, 0, -99)
-
-[node name="1x2m9" parent="Map/DebugRulerX" unique_id=915894866 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -64, 0, -99)
-
-[node name="1x2m10" parent="Map/DebugRulerX" unique_id=1245685348 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -60, 0, -99)
-
-[node name="1x2m11" parent="Map/DebugRulerX" unique_id=2135319610 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -56, 0, -99)
-
-[node name="1x2m12" parent="Map/DebugRulerX" unique_id=194634728 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -52, 0, -99)
-
-[node name="1x2m13" parent="Map/DebugRulerX" unique_id=1478312682 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -48, 0, -99)
-
-[node name="1x2m14" parent="Map/DebugRulerX" unique_id=911756397 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -44, 0, -99)
-
-[node name="1x2m15" parent="Map/DebugRulerX" unique_id=658296013 instance=ExtResource("6_ibx7c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -40, 0, -99)
-
-[editable path="Map/Killer"]
-[editable path="Map/Killer/Model"]
+[node name="DebugRuler" parent="." unique_id=440311452 instance=ExtResource("6_axw8a")]
