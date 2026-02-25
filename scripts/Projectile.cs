@@ -13,6 +13,11 @@ public partial class Projectile : RigidBody3D
 		_projectileAnimations = GetNode<AnimationPlayer>("Animations");
 		_projectileAnimations.Play("in-air");
 	}
+	
+	void OnBodyEntered(Node3D body)
+	{
+		QueueFree();
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

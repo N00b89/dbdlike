@@ -56,5 +56,14 @@ transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0042743683, -0.058034897, 0.008007051)
 shape = SubResource("BoxShape3D_8m3gc")
 
+[node name="Area3D" type="Area3D" parent="." unique_id=1874087914]
+collision_mask = 14
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=275826655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0042743683, -0.058034897, 0.008007051)
+shape = SubResource("BoxShape3D_8m3gc")
+
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=1669061960]
 libraries/ = SubResource("AnimationLibrary_c0fc4")
+
+[connection signal="body_entered" from="Area3D" to="." method="OnBodyEntered"]
